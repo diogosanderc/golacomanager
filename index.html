@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOLAÇO Manager</title>
+<meta name="description" content="Assuma um clube, monte o elenco e leve seu time do terceiro escalão até o título mundial. Jogo ao vivo lance a lance, VAR, mercado e contratos.">
+<meta name="apple-itunes-app" content="app-id=6803100910">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GOLAÇO Manager">
+<meta property="og:description" content="O futebol retrô dos anos 2000 está de volta. Monte o elenco, escale o time e acompanhe cada lance ao vivo.">
+<meta property="og:image" content="https://golacomanager.app/site/og.jpg">
+<meta property="og:url" content="https://golacomanager.app/">
+<meta name="theme-color" content="#0a0f0c">
+<link rel="icon" href="site/icone.png">
+<link rel="apple-touch-icon" href="site/apple-touch-icon.png">
+<style>
+  @font-face {
+    font-family: 'Determination';
+    src: url('site/fonte/determination.ttf') format('truetype');
+    font-display: swap;
+  }
+  :root {
+    --bg: #0a0f0c;
+    --bg-card: #121a15;
+    --line: #1f2b24;
+    --text: #f2f5f3;
+    --muted: #9aa8a0;
+    --green: #00e676;
+    --green-dark: #00b85c;
+    --gold: #f5c542;
+  }
+  * { box-sizing: border-box; }
+  img { height: auto; display: block; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    background-image:
+      linear-gradient(rgba(0, 230, 118, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 230, 118, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--green); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; padding: 64px 0 48px; }
+  .icon { width: 96px; height: 96px; border-radius: 22px; box-shadow: 0 0 40px rgba(0, 230, 118, 0.35); }
+  h1 {
+    font-size: clamp(3rem, 9vw, 5.2rem);
+    line-height: 1;
+    margin: 24px 0 12px;
+    color: var(--green);
+    font-family: 'Determination', 'Courier New', monospace;
+    font-weight: normal;
+    letter-spacing: 2px;
+    text-shadow: 0 0 30px rgba(0, 230, 118, 0.35);
+  }
+  .eyebrow {
+    display: inline-block; margin-top: 24px;
+    padding: 6px 14px; border-radius: 999px;
+    border: 1px solid rgba(0, 230, 118, 0.4); background: rgba(0, 230, 118, 0.08);
+    color: var(--green); font-size: .85rem; font-weight: 800; letter-spacing: .3px;
+  }
+  .eyebrow + h1 { margin-top: 14px; }
+  .nostalgia { text-align: center; padding-top: 24px; }
+  .nostalgia p { max-width: 640px; margin: 12px auto 0; color: var(--muted); font-size: 1.08rem; }
+  .tagline { font-size: 1.35rem; font-weight: 800; margin: 0 0 6px; }
+  .sub { color: var(--muted); font-size: 1.05rem; margin: 0 0 28px; }
+  .cta {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--green); color: #04150b;
+    padding: 14px 26px; border-radius: 14px;
+    font-weight: 800; font-size: 1.05rem; text-decoration: none;
+    box-shadow: 0 8px 30px rgba(0, 230, 118, 0.3);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .cta:hover { background: #33eb91; transform: translateY(-2px); }
+  .cta svg { width: 22px; height: 22px; }
+  .cta small { display: block; font-size: .72rem; font-weight: 700; opacity: .75; line-height: 1.1; }
+  .cta span { line-height: 1.15; text-align: left; }
+  .badge { display: inline-block; transition: transform .15s ease; }
+  .badge:hover { transform: translateY(-2px); }
+  .badge img { width: 200px; height: auto; }
+  .note { color: var(--muted); font-size: .85rem; margin-top: 12px; }
+
+  .phones { display: flex; justify-content: center; gap: 16px; }
+  .phone {
+    width: 46%; max-width: 240px;
+    border-radius: 28px; border: 6px solid #1c2420;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .55);
+    background: #000;
+  }
+  .phone.up { transform: translateY(-24px); }
+
+  /* Features */
+  section { padding: 48px 0; }
+  h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin: 0 0 8px; text-align: center; }
+  .section-sub { color: var(--muted); text-align: center; margin: 0 0 36px; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feature { background: var(--bg-card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+  .feature .emoji { font-size: 1.8rem; }
+  .feature h3 { margin: 10px 0 6px; font-size: 1.08rem; }
+  .feature p { margin: 0; color: var(--muted); font-size: .95rem; }
+
+  /* Gallery */
+  .gallery { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+  .gallery img { width: 100%; border-radius: 18px; border: 4px solid #1c2420; background: #000; }
+
+  /* Premium */
+  .premium { background: linear-gradient(135deg, #17221b, #0f1612); border: 1px solid var(--line); border-radius: 20px; padding: 32px; text-align: center; }
+  .premium h2 { color: var(--gold); }
+  .premium ul { list-style: none; padding: 0; margin: 20px auto 0; max-width: 520px; text-align: left; }
+  .premium li { padding: 6px 0 6px 28px; position: relative; color: #d6ded9; }
+  .premium li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 800; }
+
+  .final { text-align: center; padding: 56px 0 72px; }
+  .final p { color: var(--muted); margin: 0 0 24px; }
+
+  footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: .85rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+  footer a { color: var(--muted); }
+
+  @media (max-width: 860px) {
+    .hero { grid-template-columns: 1fr; text-align: center; padding-top: 40px; gap: 32px; }
+    .icon { margin: 0 auto; display: block; }
+    .features { grid-template-columns: 1fr 1fr; }
+    .gallery { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .features { grid-template-columns: 1fr; }
+    .gallery { grid-template-columns: repeat(2, 1fr); }
+    .phone.up { transform: translateY(-14px); }
+    .premium { padding: 24px 18px; }
+  }
+</style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1486876483281927');
+fbq('track', 'PageView');
+</script>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
+/></noscript>
+  <div class="wrap">
+    <header class="hero">
+      <div>
+        <img class="icon" src="site/icone.png" alt="Ícone do GOLAÇO Manager" width="96" height="96">
+        <div class="eyebrow">💾 O futebol retrô dos anos 2000 está de volta</div>
+        <h1>GOLAÇO</h1>
+        <p class="tagline">Você no comando do clube.</p>
+        <p class="sub">Monte o elenco, escale o time, negocie contratos e acompanhe cada lance ao vivo. Do terceiro escalão até o título mundial.</p>
+        <a class="badge" href="https://apps.apple.com/us/app/gola%C3%A7o-manager/id6803100910" data-store="hero"><img src="site/badge-app-store.png" alt="Disponível na App Store" width="200" height="59"></a>
+        <p class="note">Grátis para jogar</p>
+      </div>
+      <div class="phones">
+        <img class="phone" src="site/ao-vivo-rodada.webp" alt="Placar ao vivo de todos os jogos da rodada" width="660" height="1434">
+        <img class="phone up" src="site/03-tatica.webp" alt="Escalação e esquema tático" width="660" height="1434">
+      </div>
+    </header>
+  </div>
+
+  <section class="nostalgia">
+    <div class="wrap">
+      <h2>Lembra das tardes montando seu time no computador?</h2>
+      <p>Escalar o time na véspera do clássico, torcer pelo resultado ao vivo e brigar pelo acesso rodada após rodada. O GOLAÇO traz de volta aquele jeito simples e viciante de ser treinador, agora no seu celular.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Tudo o que um treinador decide</h2>
+      <p class="section-sub">Cada escolha muda o rumo da temporada.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="emoji">⏱️</div>
+          <h3>Jogo ao vivo, lance a lance</h3>
+          <p>Acompanhe gols, cartões e lesões minuto a minuto, com o placar dos outros jogos da rodada.</p>
+        </div>
+        <div class="feature">
+          <div class="emoji">📺</div>
+          <h3>VAR, pênaltis e expulsões</h3>
+          <p>Lances revisados pelo VAR, cobranças de pênalti e decisões que você toma no calor da partida.</p>
+        </div>
+        <div class="feature">
+          <div class="emoji">🧠</div>
+          <h3>Tática e substituições</h3>
+          <p>Escolha o esquema, a postura do time e faça até 5 trocas durante o jogo.</p>
+        </div>
+        <div class="feature">
+          <div class="emoji">💰</div>
+          <h3>Mercado de transferências</h3>
+          <p>Contrate, venda e negocie com os outros clubes. Encontre o reforço que falta no elenco.</p>
+        </div>
+        <div class="feature">
+          <div class="emoji">✍️</div>
+          <h3>Contratos de verdade</h3>
+          <p>Jogadores pedem aumento, ficam insatisfeitos e podem sair de graça se você não renovar.</p>
+        </div>
+        <div class="feature">
+          <div class="emoji">🏆</div>
+          <h3>Finanças e patrocínios</h3>
+          <p>Feche patrocínios, cuide do caixa e invista em Departamento Médico e Categoria de Base.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2>Por dentro do jogo</h2>
+      <p class="section-sub">Telas reais do GOLAÇO Manager.</p>
+      <div class="gallery">
+        <img src="site/02-substituicao.webp" alt="Janela de substituição" width="660" height="1434">
+        <img src="site/09-mercado.webp" alt="Mercado de jogadores" width="660" height="1434">
+        <img src="site/07-contratacao.webp" alt="Contratação de jogador" width="660" height="1434">
+        <img src="site/05-pedido-aumento.webp" alt="Pedido de aumento de um jogador" width="660" height="1434">
+        <img src="site/01-var.webp" alt="Revisão do VAR" width="660" height="1434">
+        <img src="site/08-patrocinios.webp" alt="Contratos de patrocínio" width="660" height="1434">
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="premium">
+        <h2>GOLAÇO Premium</h2>
+        <p class="section-sub" style="margin:0">Uma compra única, sem assinatura.</p>
+        <ul>
+          <li>Sem anúncios</li>
+          <li>Comece a carreira também nas duas primeiras divisões</li>
+          <li>Negocie jogadores com os clubes grandes</li>
+          <li>Departamento Médico e Categoria de Base</li>
+          <li>4 campanhas salvas ao mesmo tempo</li>
+          <li>Dispute as copas, os torneios continental e mundial e a seleção</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap final">
+    <h2>Pronto para fazer história?</h2>
+    <p>Baixe grátis e assuma seu clube hoje.</p>
+    <a class="badge" href="https://apps.apple.com/us/app/gola%C3%A7o-manager/id6803100910" data-store="footer"><img src="site/badge-app-store.png" alt="Disponível na App Store" width="200" height="59"></a>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <span>© 2026 GOLAÇO Manager · Fonte <a href="https://fontstruct.com/fontstructions/show/2368299">“Determination”</a> por anonymous-1438277 (<a href="https://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>)</span>
+      <span>
+        <a href="loja/privacidade.html">Política de Privacidade</a> ·
+        <a href="loja/suporte.html">Suporte</a> ·
+        <a href="mailto:diogosanderc@gmail.com">Contato</a>
+      </span>
+    </div>
+  </footer>
+<script>
+  // Conta no Meta cada clique no selo da App Store (evento "CliqueAppStore").
+  document.querySelectorAll('a[data-store]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (window.fbq) fbq('trackCustom', 'CliqueAppStore', { posicao: a.dataset.store });
+    });
+  });
+</script>
+</body>
+</html>
