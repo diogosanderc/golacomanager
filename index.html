@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N62M9D68MP"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-N62M9D68MP');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GOLAÇO Manager</title>
@@ -271,10 +280,11 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
     </div>
   </footer>
 <script>
-  // Conta no Meta cada clique no selo da App Store (evento "CliqueAppStore").
+  // Conta cada clique no selo da App Store: no Meta ("CliqueAppStore") e no Analytics ("clique_app_store").
   document.querySelectorAll('a[data-store]').forEach(function (a) {
     a.addEventListener('click', function () {
       if (window.fbq) fbq('trackCustom', 'CliqueAppStore', { posicao: a.dataset.store });
+      if (window.gtag) gtag('event', 'clique_app_store', { posicao: a.dataset.store });
     });
   });
 </script>
