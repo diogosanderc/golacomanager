@@ -64,6 +64,11 @@
   .btn-sm:hover { background: rgba(0,230,118,.18); }
 
   /* Hero */
+  .appname { display: flex; align-items: center; gap: 18px; margin-bottom: 34px; }
+  .appname img { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 44px rgba(0,230,118,.22); }
+  .appname div { font-family: var(--display); font-weight: 800; text-transform: uppercase; line-height: .86; }
+  .appname b { display: block; font-size: 3.4rem; letter-spacing: .01em; }
+  .appname span { display: block; font-size: 1.62rem; letter-spacing: .36em; color: var(--green); }
   .hero { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; padding: 40px 0 72px; }
   .store { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; margin-top: 30px; }
   .badge { display: inline-block; transition: transform .15s ease; }
@@ -143,6 +148,7 @@
     .hero, .row, .career, .premium { grid-template-columns: 1fr; }
     .hero { padding-top: 16px; gap: 24px; text-align: center; }
     .hero .lead { margin-left: auto; margin-right: auto; }
+    .appname { justify-content: center; text-align: left; }
     .store { justify-content: center; }
     .duo { height: 470px; max-width: 420px; width: 100%; margin: 0 auto; }
     .duo .phone { width: 210px; }
@@ -197,7 +203,11 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
 
     <header class="hero">
       <div>
-        <div class="kick">Manager de futebol retrô</div>
+        <div class="appname">
+          <img src="site/icone.png" alt="" width="84" height="84">
+          <div><b>GOLAÇO</b><span>Manager</span></div>
+        </div>
+        <div class="kick">Futebol retrô no seu celular</div>
         <div class="rule"></div>
         <h1>Você no comando <em>do clube.</em></h1>
         <p class="lead">Monte o elenco, escale o time, negocie contratos e acompanhe cada lance ao vivo. Do terceiro escalão até o título mundial.</p>
