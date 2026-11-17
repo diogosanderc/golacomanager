@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://golacomanager.app/sitemap.xml

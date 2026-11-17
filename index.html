@@ -12,14 +12,64 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GOLAÇO Manager</title>
-<meta name="description" content="Assuma um clube, monte o elenco e leve seu time do terceiro escalão até o título mundial. Jogo ao vivo lance a lance, VAR, mercado e contratos.">
+<title>GOLAÇO Manager: jogo de manager de futebol para iPhone e iPad</title>
+<meta name="description" content="Jogo de manager de futebol grátis para iPhone e iPad. Monte o elenco, escale o time, contrate jogadores e acompanhe cada lance ao vivo, da 3ª divisão ao Mundial.">
+<meta name="keywords" content="jogo de futebol, manager de futebol, jogo de técnico de futebol, futebol manager, app de futebol, jogo de futebol para iPhone, simulador de futebol, brasileirão, jogo de gerenciar time, golaço manager">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<link rel="canonical" href="https://golacomanager.app/">
 <meta name="apple-itunes-app" content="app-id=6803100910">
 <meta property="og:type" content="website">
-<meta property="og:title" content="GOLAÇO Manager">
-<meta property="og:description" content="Manager de futebol retrô. Monte o elenco, escale o time e acompanhe cada lance ao vivo.">
+<meta property="og:site_name" content="GOLAÇO Manager">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:title" content="GOLAÇO Manager: jogo de manager de futebol">
+<meta property="og:description" content="Manager de futebol retrô, grátis para iPhone e iPad. Monte o elenco, escale o time e acompanhe cada lance ao vivo.">
 <meta property="og:image" content="https://golacomanager.app/site/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:url" content="https://golacomanager.app/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GOLAÇO Manager: jogo de manager de futebol">
+<meta name="twitter:description" content="Manager de futebol retrô, grátis para iPhone e iPad.">
+<meta name="twitter:image" content="https://golacomanager.app/site/og.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "MobileApplication",
+      "name": "GOLAÇO Manager",
+      "alternateName": "Golaço",
+      "description": "Jogo de manager de futebol para iPhone e iPad. Monte o elenco, escale o time, negocie contratos e acompanhe cada lance ao vivo, da 3ª divisão ao Mundial.",
+      "operatingSystem": "iOS, iPadOS",
+      "applicationCategory": "GameApplication",
+      "applicationSubCategory": "Esportes",
+      "genre": ["Esportes", "Simulação"],
+      "inLanguage": "pt-BR",
+      "url": "https://golacomanager.app/",
+      "downloadUrl": "https://apps.apple.com/us/app/gola%C3%A7o-manager/id6803100910",
+      "installUrl": "https://apps.apple.com/us/app/gola%C3%A7o-manager/id6803100910",
+      "image": "https://golacomanager.app/site/icone.png",
+      "screenshot": ["https://golacomanager.app/site/ao-vivo.webp", "https://golacomanager.app/site/rodada-jogos.webp", "https://golacomanager.app/site/tatica.webp", "https://golacomanager.app/site/mercado.webp"],
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" }
+    },
+    {
+      "@type": "WebSite",
+      "name": "GOLAÇO Manager",
+      "url": "https://golacomanager.app/",
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "O GOLAÇO Manager é grátis?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. O jogo é grátis para baixar e jogar no iPhone e no iPad. Existe o GOLAÇO Premium, uma compra única sem assinatura, que tira os anúncios e libera as duas primeiras divisões, os clubes grandes no mercado, departamento médico, categoria de base, 4 campanhas salvas e as copas." } },
+        { "@type": "Question", "name": "Como funciona o jogo?", "acceptedAnswer": { "@type": "Answer", "text": "Você é o técnico e dirigente de um clube brasileiro: escolhe o esquema tático, escala o time, contrata e vende jogadores, renova contratos e acompanha cada partida ao vivo, lance a lance, com a narração e os placares da rodada ao mesmo tempo." } },
+        { "@type": "Question", "name": "Quais competições existem no jogo?", "acceptedAnswer": { "@type": "Answer", "text": "Três divisões nacionais com acesso e rebaixamento, a copa nacional em mata-mata, o torneio continental e o Mundial. A carreira começa num clube pequeno da 3ª divisão." } },
+        { "@type": "Question", "name": "Em quais aparelhos dá para jogar?", "acceptedAnswer": { "@type": "Answer", "text": "No iPhone e no iPad, pela App Store." } }
+      ]
+    }
+  ]
+}
+</script>
 <meta name="theme-color" content="#090b0a">
 <link rel="icon" href="site/icone.png">
 <link rel="apple-touch-icon" href="site/apple-touch-icon.png">
@@ -64,7 +114,8 @@
   .btn-sm:hover { background: rgba(0,230,118,.18); }
 
   /* Hero */
-  .appname { display: flex; align-items: center; gap: 18px; margin-bottom: 34px; }
+  .appname { display: flex; align-items: center; gap: 18px; margin-bottom: 34px; font-size: 1rem; line-height: 1; }
+  .hero-title { font-size: clamp(3rem, 8.4vw, 5.6rem); line-height: .9; }
   .appname img { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 44px rgba(0,230,118,.22); }
   .appname div { font-family: var(--display); font-weight: 800; text-transform: uppercase; line-height: .86; }
   .appname b { display: block; font-size: 3.4rem; letter-spacing: .01em; }
@@ -127,6 +178,16 @@
   .gallery .phone { border-radius: 32px; padding: 6px; }
   .gallery .phone .screen { border-radius: 27px; aspect-ratio: 660 / 1250; }
   .gallery figcaption { margin-top: 14px; font-family: var(--display); font-weight: 700; font-size: 1.15rem; text-transform: uppercase; text-align: center; }
+
+  /* FAQ */
+  .faq { padding: 84px 0 64px; border-top: 1px solid var(--line); }
+  .qa { margin-top: 30px; border-top: 1px solid var(--line); }
+  .qa details { border-bottom: 1px solid var(--line); }
+  .qa summary { cursor: pointer; list-style: none; padding: 20px 36px 20px 0; position: relative; font-weight: 600; font-size: 1.08rem; }
+  .qa summary::-webkit-details-marker { display: none; }
+  .qa summary::after { content: '+'; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-family: var(--display); font-size: 1.6rem; color: var(--green); }
+  .qa details[open] summary::after { content: '–'; }
+  .qa p { margin: 0 0 20px; color: var(--muted); max-width: 760px; }
 
   /* Premium */
   .premium { margin: 20px 0 84px; padding: 40px; border-radius: 22px; border: 1px solid rgba(255,193,7,.35); background: linear-gradient(135deg, rgba(255,193,7,.08), rgba(255,193,7,.01)); display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: center; }
@@ -205,14 +266,14 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
 
     <header class="hero">
       <div>
-        <div class="appname">
-          <img src="site/icone.png" alt="" width="84" height="84">
+        <h1 class="appname">
+          <img src="site/icone.png" alt="Ícone do GOLAÇO Manager" width="84" height="84">
           <div><b>GOLAÇO</b><span>Manager</span></div>
-        </div>
-        <div class="kick">Futebol retrô no seu celular</div>
+        </h1>
+        <div class="kick">Jogo de manager de futebol</div>
         <div class="rule"></div>
-        <h1>Você no comando <em>do clube.</em></h1>
-        <p class="lead">Monte o elenco, escale o time, negocie contratos e acompanhe cada lance ao vivo. Do terceiro escalão até o título mundial.</p>
+        <h2 class="hero-title">Você no comando <em>do clube.</em></h2>
+        <p class="lead">O GOLAÇO Manager é um jogo de técnico de futebol grátis para iPhone e iPad. Monte o elenco, escale o time, negocie contratos e acompanhe cada lance ao vivo, do terceiro escalão até o título mundial.</p>
         <div class="store">
           <a class="badge" href="https://apps.apple.com/us/app/gola%C3%A7o-manager/id6803100910" data-store="hero"><img src="site/badge-app-store.png" alt="Disponível na App Store" width="200" height="59"></a>
           <span class="note">Grátis para jogar · iPhone e iPad</span>
@@ -220,8 +281,8 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
       </div>
       <div class="duo">
         <div class="glow"></div>
-        <div class="phone"><div class="screen"><img src="site/rodada-jogos.webp" alt="Placar ao vivo de todos os jogos da rodada" width="660" height="1434"></div></div>
-        <div class="phone"><div class="screen"><img src="site/ao-vivo.webp" alt="Partida ao vivo com placar e narração" width="660" height="1434"></div></div>
+        <div class="phone"><div class="screen"><img src="site/rodada-jogos.webp" alt="Jogo de futebol: placar ao vivo de todos os jogos da rodada" width="660" height="1434"></div></div>
+        <div class="phone"><div class="screen"><img src="site/ao-vivo.webp" alt="Manager de futebol: partida ao vivo com placar e narração" width="660" height="1434"></div></div>
       </div>
     </header>
 
@@ -312,6 +373,17 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
         <figure><div class="phone end"><div class="screen"><img src="site/substituicao.webp" alt="Substituição durante o jogo" width="660" height="1434" loading="lazy"></div></div><figcaption>Substituições</figcaption></figure>
         <figure><div class="phone end"><div class="screen"><img src="site/insatisfeito.webp" alt="Jogador insatisfeito pedindo para sair" width="660" height="1434" loading="lazy"></div></div><figcaption>Elenco</figcaption></figure>
         <figure><div class="phone"><div class="screen"><img src="site/financas.webp" alt="Contratos de patrocínio" width="660" height="1434" loading="lazy"></div></div><figcaption>Finanças</figcaption></figure>
+      </div>
+    </section>
+
+    <section class="faq">
+      <div class="kick">Perguntas frequentes</div><div class="rule"></div>
+      <h2>Tudo sobre <em>o jogo.</em></h2>
+      <div class="qa">
+        <details open><summary>O GOLAÇO Manager é grátis?</summary><p>Sim. O jogo é grátis para baixar e jogar no iPhone e no iPad. Existe o GOLAÇO Premium, uma compra única sem assinatura, que tira os anúncios e libera as duas primeiras divisões, os clubes grandes no mercado, departamento médico, categoria de base, 4 campanhas salvas e as copas.</p></details>
+        <details><summary>Como funciona o jogo?</summary><p>Você é o técnico e dirigente de um clube brasileiro: escolhe o esquema tático, escala o time, contrata e vende jogadores, renova contratos e acompanha cada partida ao vivo, lance a lance, com a narração e os placares da rodada ao mesmo tempo.</p></details>
+        <details><summary>Quais competições existem no jogo?</summary><p>Três divisões nacionais com acesso e rebaixamento, a copa nacional em mata-mata, o torneio continental e o Mundial. A carreira começa num clube pequeno da 3ª divisão.</p></details>
+        <details><summary>Em quais aparelhos dá para jogar?</summary><p>No iPhone e no iPad, pela App Store.</p></details>
       </div>
     </section>
 
