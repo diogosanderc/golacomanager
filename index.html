@@ -70,7 +70,7 @@
   ]
 }
 </script>
-<meta name="theme-color" content="#090b0a">
+<meta name="theme-color" content="#0f3526">
 <link rel="icon" href="site/icone.png">
 <link rel="apple-touch-icon" href="site/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -79,9 +79,10 @@
 <style>
   /* Same system as the app (4.1 redesign): Barlow Condensed for titles and numbers, Outfit for
      text, near-black surfaces, green only for what matters, gold for the top of the ladder. */
+  /* Prancheta do técnico (4.4): chalkboard green, chalk white and yellow chalk for what matters. */
   :root {
-    --bg: #090b0a; --band: #0b0e0c; --card: #111513; --line: #1d2420; --line-2: #2a322d;
-    --text: #f3f4f6; --muted: #9aa19c; --green: #00e676; --gold: #ffc107;
+    --bg: #0f3526; --band: #0f3526; --card: rgba(6,28,19,.55); --line: rgba(255,255,255,.12); --line-2: rgba(255,255,255,.2);
+    --text: #f6f4ee; --muted: #c3d3c8; --green: #ffd54a; --gold: #ffd54a; --chalk: #f6f4ee;
     --display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
   }
   * { box-sizing: border-box; }
@@ -90,13 +91,17 @@
   body {
     margin: 0; color: var(--text); font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.55; -webkit-font-smoothing: antialiased;
-    background: var(--bg) repeating-linear-gradient(180deg, var(--band) 0 120px, var(--bg) 120px 240px);
+    background: radial-gradient(120% 60% at 50% 0%, #1b4b36 0%, #123d2b 45%, #0c2d1f 100%) fixed, #0f3526;
   }
+  /* chalk dust over the whole board */
+  body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: .6; mix-blend-mode: screen;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 .08 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); }
+  body > * { position: relative; z-index: 1; }
   a { color: var(--green); }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
   .kick { font-weight: 600; font-size: .78rem; letter-spacing: .18em; text-transform: uppercase; color: var(--green); }
-  .kick b { color: var(--muted); font-weight: 600; margin-right: 10px; }
-  .rule { height: 1px; background: linear-gradient(90deg, rgba(0,230,118,.55), rgba(0,230,118,.08)); margin: 12px 0 18px; }
+  .kick b { color: var(--chalk); font-weight: 600; margin-right: 10px; }
+  .rule { height: 2px; background: linear-gradient(90deg, rgba(246,244,238,.5), rgba(246,244,238,.06)); margin: 12px 0 18px; border-radius: 2px; }
   h1, h2, h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; letter-spacing: -.005em; margin: 0; }
   h1 { font-size: clamp(3rem, 8.4vw, 5.6rem); line-height: .9; }
   h2 { font-size: clamp(2.2rem, 5.6vw, 3.6rem); line-height: .92; }
@@ -110,13 +115,13 @@
   .brand span { font-family: var(--display); font-weight: 800; font-size: 1.6rem; letter-spacing: .02em; }
   .btn { display: inline-flex; align-items: center; gap: 8px; border-radius: 12px; font-weight: 700; text-decoration: none; transition: filter .15s ease, transform .12s ease; }
   .btn:active { transform: scale(.98); }
-  .btn-sm { padding: 9px 16px; font-size: .9rem; color: var(--green); border: 1px solid rgba(0,230,118,.45); background: rgba(0,230,118,.1); }
-  .btn-sm:hover { background: rgba(0,230,118,.18); }
+  .btn-sm { padding: 9px 16px; font-size: .9rem; color: #1a1606; border: 1px solid #ffd54a; background: #ffd54a; }
+  .btn-sm:hover { filter: brightness(1.06); }
 
   /* Hero */
   .appname { display: flex; align-items: center; gap: 18px; margin-bottom: 34px; font-size: 1rem; line-height: 1; }
   .hero-title { font-size: clamp(3rem, 8.4vw, 5.6rem); line-height: .9; }
-  .appname img { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 44px rgba(0,230,118,.22); }
+  .appname img { width: 84px; height: 84px; border-radius: 20px; box-shadow: 0 12px 34px rgba(0,0,0,.55), 0 0 44px rgba(255,213,74,.12); }
   .appname div { font-family: var(--display); font-weight: 800; text-transform: uppercase; line-height: .86; }
   .appname b { display: block; font-size: 3.4rem; letter-spacing: .01em; }
   .appname span { display: block; margin-top: 8px; font-size: 1.62rem; letter-spacing: .36em; color: var(--green); }
@@ -130,7 +135,7 @@
   .duo .phone { position: absolute; width: 270px; }
   .duo .phone:nth-child(2) { left: 0; top: 70px; opacity: .9; }
   .duo .phone:nth-child(3) { right: 0; top: 0; }
-  .glow { position: absolute; inset: 10% 0 auto; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(0,230,118,.16), rgba(0,230,118,0) 62%); pointer-events: none; }
+  .glow { position: absolute; inset: 10% 0 auto; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(255,255,255,.07), rgba(255,255,255,0) 62%); pointer-events: none; }
 
   /* Phone mockup: same frame as the App Store slides */
   .phone { border-radius: 44px; background: #050505; padding: 8px; box-shadow: 0 0 0 1.5px #3b403d, 0 0 0 3px #161917, 0 40px 80px rgba(0,0,0,.65); }
@@ -155,20 +160,20 @@
   .row .phone { width: 300px; margin: 0 auto; }
   .row .phone .screen { aspect-ratio: 660 / 1180; }
   .points { list-style: none; padding: 0; margin: 26px 0 0; display: grid; gap: 12px; }
-  .points li { display: flex; gap: 12px; align-items: flex-start; color: #d6ddd8; }
+  .points li { display: flex; gap: 12px; align-items: flex-start; color: #e6ece8; }
   .points svg { flex-shrink: 0; width: 22px; height: 22px; color: var(--green); margin-top: 1px; }
 
   /* Career ladder */
   .career { padding: 96px 0; display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
   .ladder { display: grid; gap: 10px; }
   .step { display: flex; align-items: center; gap: 16px; padding: 18px 20px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); }
-  .step .n { font-family: var(--display); font-weight: 700; font-size: 1.05rem; color: #56605a; width: 24px; }
+  .step .n { font-family: var(--display); font-weight: 700; font-size: 1.05rem; color: rgba(246,244,238,.45); width: 24px; }
   .step .t { flex: 1; font-family: var(--display); font-weight: 700; font-size: 1.7rem; text-transform: uppercase; line-height: 1; }
   .step .d { color: var(--muted); font-size: .88rem; text-align: right; }
-  .step.top { background: linear-gradient(90deg, rgba(255,193,7,.16), rgba(255,193,7,.04)); border-color: rgba(255,193,7,.45); }
+  .step.top { background: linear-gradient(90deg, rgba(255,213,74,.16), rgba(255,213,74,.04)); border-color: rgba(255,213,74,.55); }
   .step.top .t { color: var(--gold); }
-  .step.cup { box-shadow: inset 3px 0 0 rgba(0,230,118,.6); }
-  .step.start { border-color: rgba(0,230,118,.55); background: rgba(0,230,118,.07); }
+  .step.cup { box-shadow: inset 3px 0 0 rgba(246,244,238,.55); }
+  .step.start { border-color: rgba(246,244,238,.55); background: rgba(246,244,238,.06); }
   .step.start .d { color: var(--green); font-weight: 600; }
 
   /* Gallery */
@@ -190,16 +195,16 @@
   .qa p { margin: 0 0 20px; color: var(--muted); max-width: 760px; }
 
   /* Premium */
-  .premium { margin: 20px 0 84px; padding: 40px; border-radius: 22px; border: 1px solid rgba(255,193,7,.35); background: linear-gradient(135deg, rgba(255,193,7,.08), rgba(255,193,7,.01)); display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: center; }
+  .premium { margin: 20px 0 84px; padding: 40px; border-radius: 22px; border: 2px dashed rgba(255,213,74,.55); background: rgba(6,28,19,.45); display: grid; grid-template-columns: .9fr 1.1fr; gap: 40px; align-items: center; }
   .premium .kick { color: var(--gold); }
   .premium h2 em { color: var(--gold); }
   .premium ul { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: 14px 22px; }
-  .premium li { display: flex; gap: 10px; color: #e3e7e4; font-size: .98rem; }
+  .premium li { display: flex; gap: 10px; color: #eef2ef; font-size: .98rem; }
   .premium li svg { flex-shrink: 0; width: 20px; height: 20px; color: var(--gold); margin-top: 2px; }
 
   /* Final */
   .final { text-align: center; padding: 30px 0 96px; }
-  .final img.icon { width: 120px; height: 120px; border-radius: 28px; margin: 0 auto 28px; box-shadow: 0 20px 60px rgba(0,0,0,.6), 0 0 80px rgba(0,230,118,.25); }
+  .final img.icon { width: 120px; height: 120px; border-radius: 28px; margin: 0 auto 28px; box-shadow: 0 20px 60px rgba(0,0,0,.6), 0 0 80px rgba(255,213,74,.14); }
   .final h2 { font-size: clamp(2.6rem, 7vw, 4.4rem); }
   .final p { color: var(--muted); margin: 14px 0 28px; font-size: 1.08rem; }
 
@@ -300,7 +305,7 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
           <h2>Cada lance, <em>minuto a minuto.</em></h2>
           <p class="lead">Narração do apito inicial ao final. Gol, pênalti, cartão e expulsão aparecem na hora, e você mexe no time enquanto a bola rola.</p>
           <ul class="points">
-            <li><svg><use href="#i-check"/></svg>Três velocidades de simulação e pausa a qualquer momento</li>
+            <li><svg><use href="#i-check"/></svg>Quatro velocidades (0,5x a 2x) e pausa a qualquer momento</li>
             <li><svg><use href="#i-check"/></svg>Até cinco substituições por jogo</li>
             <li><svg><use href="#i-check"/></svg>Você escolhe quem bate o pênalti</li>
           </ul>
@@ -333,7 +338,21 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
 
       <div class="row">
         <div class="copy">
-          <div class="kick"><b>04</b>Tática</div><div class="rule"></div>
+          <div class="kick"><b>04</b>Amistoso</div><div class="rule"></div>
+          <h2>Desafie <em>seu amigo.</em></h2>
+          <p class="lead">Dois iPhones lado a lado, sem internet. Cada um com o seu time da carreira, no mesmo jogo ao vivo, pelo Wi-Fi ou Bluetooth.</p>
+          <ul class="points">
+            <li><svg><use href="#i-check"/></svg>Placar e lances iguais nos dois celulares</li>
+            <li><svg><use href="#i-check"/></svg>Cada técnico mexe no próprio time durante o jogo</li>
+            <li><svg><use href="#i-check"/></svg>Resultado vira imagem para mandar no grupo</li>
+          </ul>
+        </div>
+        <div class="phone"><div class="screen"><img src="site/amistoso.webp" alt="Amistoso ao vivo entre dois iPhones" width="660" height="1434" loading="lazy"></div></div>
+      </div>
+
+      <div class="row">
+        <div class="copy">
+          <div class="kick"><b>05</b>Tática</div><div class="rule"></div>
           <h2>4-4-2, 3-5-2 <em>ou 4-3-3.</em></h2>
           <p class="lead">Escolha o esquema, a postura e quem entra em campo. Jogador fora de posição rende menos, e o campo mostra quanto.</p>
           <ul class="points">
@@ -346,7 +365,7 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
 
       <div class="row">
         <div class="copy">
-          <div class="kick"><b>05</b>Mercado</div><div class="rule"></div>
+          <div class="kick"><b>06</b>Mercado</div><div class="rule"></div>
           <h2>Contrate <em>antes do rival.</em></h2>
           <p class="lead">Idade, salário, força e preço de cada jogador na tela. Faça a proposta, negocie com o clube e feche o reforço que falta no elenco.</p>
         </div>
@@ -355,7 +374,7 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
 
       <div class="row">
         <div class="copy">
-          <div class="kick"><b>06</b>Vestiário</div><div class="rule"></div>
+          <div class="kick"><b>07</b>Vestiário</div><div class="rule"></div>
           <h2>O titular <em>quer aumento.</em></h2>
           <p class="lead">Paga o que ele pede ou arrisca perder o jogador de graça no fim do contrato. Quem fica no banco reclama e pede para sair.</p>
         </div>
@@ -365,7 +384,7 @@ src="https://www.facebook.com/tr?id=1486876483281927&ev=PageView&noscript=1"
 
     <section class="career">
       <div>
-        <div class="kick"><b>07</b>Modo carreira</div><div class="rule"></div>
+        <div class="kick"><b>08</b>Modo carreira</div><div class="rule"></div>
         <h2>Da 3ª divisão <em>ao Mundial.</em></h2>
         <p class="lead">Comece num clube pequeno e suba degrau por degrau. Cada temporada conta, e a diretoria cobra resultado.</p>
       </div>
